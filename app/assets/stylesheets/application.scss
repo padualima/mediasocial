@@ -1,0 +1,74 @@
+@import "bulma";
+
+body{
+
+}
+
+.color-ground{
+  background-color: #3C2879;
+}
+
+nav .columns {
+  display: inline-block;
+  margin: auto;
+  align-items: center;
+}
+
+nav .columns .column {
+  text-align: right;
+  padding: 4px;
+  margin: auto;
+
+}
+
+nav .columns .column .dropdown-menu {
+  text-align: left;
+}
+nav .columns .logo img {
+  padding-left: 10px;
+  width: 26vh;
+  display:table-row;
+
+}
+nav .columns .profile img{
+  width: 5vh;
+}
+
+nav .columns .profile {
+  padding-right: 10px;
+}
+nav p{
+  color: white;
+  font-size: 22px;
+}
+
+.container .search{
+  width: 50%;
+  margin: auto;
+}
+.container .search input{
+  margin-bottom: 11px;
+}
+
+.container .card{
+  margin: 14px;
+  border-radius: 10px;
+}
+
+.container .card .card-content .media .pull-right p {
+  text-align: right;
+  margin: 0;
+}
+
+@media (max-width: 968px) {
+  nav .columns {
+    display: flex;
+  }
+  nav .columns .logo {
+    margin: 0;
+  }
+  .container .search{
+    width: 80%;
+    margin: auto;
+  }
+}

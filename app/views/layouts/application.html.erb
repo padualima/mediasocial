@@ -1,15 +1,96 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>SocialmediaGovPredict</title>
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
+<head>
+  <title>SocialmediaGovPredict</title>
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+</head>
 
-  <body>
+<body>
+
+  <nav class="color-ground" role="navigation">
+    <div class="columns">
+      <div class="column logo">
+        <%= image_tag "govpredict-logo.png" %>
+      </div>
+      <div class="column has-text-centered">
+        <p>Publicações</p>
+      </div>
+      <div class="column profile">
+        <div class="dropdown is-right is-hoverable">
+          <div class="dropdown-trigger image">
+            <%= image_tag "https://bulma.io/images/placeholders/96x96.png", class: "is-rounded", aria: {haspopup: "true", controls: "img-ground"} %>
+          </div>
+          <div class="dropdown-menu" id="img-ground" role="menu">
+            <div class="dropdown-content">
+              <div class="dropdown-item">
+                Editar Perfil
+              </div>
+              <div class="dropdown-item">
+                Perfil
+              </div>
+              <hr class="navbar-divider">
+              <div class="dropdown-item">
+                Sair
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+  <br>
+  <div class="container">
+    <section>
+      <div class="search ">
+        <input class="input is-rounded" type="text" placeholder="Rounded input">
+        <div class="select">
+          <select>
+            <option>Filtrar</option>
+            <option>With options</option>
+          </select>
+        </div>
+      </div>
+    </section>
+
     <%= yield %>
-  </body>
+    <section>
+      <div class="card">
+        <div class="card-content">
+          <div class="media">
+            <div class="media-left">
+              <figure class="image is-48x48">
+                <%= image_tag "https://bulma.io/images/placeholders/96x96.png", class: "is-rounded" %>
+              </figure>
+            </div>
+            <div class="media-content">
+              <p class="title is-4">John Smith</p>
+              <p class="subtitle is-6">@johnsmith • <i>By Facebook</i></p>
+            </div>
+            <div class="pull-right">
+              <p class="subtitle is-6">Lista de GovPredict Engineers </p>
+            </div>
+          </div>
+          <div class="content">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            Phasellus nec iaculis mauris. <a>@bulmaio</a>.
+            <a href="#">#css</a> <a href="#">#responsive</a>
+          </div>
+          <div class="card-image">
+            <figure class="image">
+              <%= image_tag "https://bulma.io/images/placeholders/1280x960.png" %>
+            </figure>
+          </div>
+          <br>
+          <div class="has-text-right">
+            <time datetime="2016-1-1">11:09 PM - 1 Jan 2016</time>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</body>
 </html>
