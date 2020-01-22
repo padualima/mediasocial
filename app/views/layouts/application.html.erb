@@ -22,7 +22,7 @@
       <div class="column profile">
         <div class="dropdown is-right is-hoverable">
           <div class="dropdown-trigger image">
-            <%= image_tag "https://bulma.io/images/placeholders/96x96.png", class: "is-rounded", aria: {haspopup: "true", controls: "img-ground"} %>
+            <%= image_tag "profile/3.jpeg", class: "is-rounded", aria: {haspopup: "true", controls: "img-ground"} %>
           </div>
           <div class="dropdown-menu" id="img-ground" role="menu">
             <div class="dropdown-content">
@@ -58,8 +58,14 @@
     <section>
       <%= yield %>
     </section>
-    <%= paginate @posts %>
-    <br>
+    <div class="columns is-8 is-responsive">
+      <div class="column">
+        <%= paginate @posts %>
+      </div>
+    </div>
+    <footer>
+      
+    </footer>
   </div>
 </body>
 </html>

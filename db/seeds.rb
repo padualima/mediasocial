@@ -14,7 +14,9 @@ puts "Created accounts"
 
 puts "Creating the Users"
 10.times do
-  User.find_or_create_by!( name: Faker::Name.name, username: Faker::Internet.domain_word )
+  u = User.find_or_create_by!(name: Faker::Name.name, username: Faker::Internet.domain_word)
+  num = [1,2,3,4,5,6].sample
+  u.image_user.attach(io: File.open(Rails.root.join('app', 'assets', 'images', 'profile', "#{num}.jpeg")), filename: "#{num}.jpeg")
 end
 puts "Created Users"
 
