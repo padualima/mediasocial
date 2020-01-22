@@ -1,0 +1,9 @@
+<% if page.current? %>
+  <li class="pagination-link is-current">
+    <%= content_tag :a, page, data: { remote: remote }, rel: page.rel, class: "has-text-white" %>
+  </li>
+<% else %>
+  <li class="pagination-link">
+    <%= link_to page, url, remote: remote, rel: page.rel %>
+  </li>
+<% end %>
