@@ -1,0 +1,40 @@
+<% @posts.each do |post| %>
+<% cache post do  %>
+<%= link_to "#{post.link_social}" do %>
+<div class="card">
+  <div class="card-content">
+    <div class="media">
+      <div class="media-left">
+        <figure class="image is-48x48">
+          <%= image_tag "https://bulma.io/images/placeholders/96x96.png", class: "is-rounded" %>
+        </figure>
+      </div>
+      <div class="media-content">
+        <p class="title is-4"><%= post.user.name %></p>
+        <p class="subtitle is-6">@<%= post.user.username %> • <i>By <%= post.account_user.account.description %></i></p>
+      </div>
+      <div class="pull-right">
+        <p class="subtitle is-6">Lista de <%= post.list_user.list.description %> </p>
+      </div>
+    </div>
+    <div class="content">
+      <%= post.body %>
+    </div>
+    <div class="card-image">
+      <figure class="image">
+        <%= image_tag(post.image) if post.image.attached? %>
+      </figure>
+    </div>
+    <br>
+    <div class="has-text-right">
+      <time datetime="2016-1-1"><%= l post.created_at, format: :short %></time>
+    </div>
+  </div>
+</div>
+<% end %>
+<% end %>
+<% end %>
+
+<nav class="pagination is-rounded" role="navigation" aria-label="pagination">
+  <%= paginate @posts, class: "pagination-link" %>
+</nav>

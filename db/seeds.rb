@@ -43,13 +43,23 @@ end
 puts "Created lists of Users"
 
 puts "Creating the Post"
-13000.times do
-  x = User.all.sample
-  Post.create!(
+
+50.times do |x|
+  user = User.all.sample
+  list = ListUser.where(user_id: user).sample
+  account = AccountUser.where(user_id: user).sample
+  link = account.account.description.downcase
+
+  v = Post.create!(
     body: Faker::Lorem.paragraph(sentence_count: 2, supplemental: false, random_sentences_to_add: 4),
-    user_id: x.id,
-    list_user_id: ListUser.where(user_id: x).sample.list_id,
-    account_user_id: AccountUser.where(user_id: 4).sample.account_id
+    user_id: user.id,
+    list_user_id: list.id,
+    account_user_id: account.id,
+    link_social: "https://#{link}.com/#{user.username}"
   )
+  if x % 2 == 0
+    num = [1,2,3,4,5,6].sample
+    v.image.attach(io: File.open(Rails.root.join('app', 'assets', 'images', "#{num}.jpg")), filename: "#{num}.jpg")
+  end
 end
 puts "Created the Post of Users"
