@@ -1,4 +1,12 @@
-<% @posts.each do |post| %>
+<p class="text-search">
+  <% if @posts_search.any? %>
+  <%= pluralize(@posts_search.count, 'resultado encontrado:', plural: 'resultados encontrados:') %>
+  <% else %>
+  Nenhum resultado encontrado.
+  <% end %>
+</p>
+
+<% @posts_search.each do |post| %>
 <% cache post do  %>
 <%= link_to "#{post.link_social}" do %>
 <div class="card">
@@ -36,6 +44,6 @@
 <% end %>
 <div class="columns is-8 is-responsive ">
   <div class="column">
-    <%= paginate @posts %>
+    <%= paginate @posts_search %>
   </div>
 </div>

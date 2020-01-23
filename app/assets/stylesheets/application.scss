@@ -20,6 +20,10 @@ nav .columns .column {
   margin: auto;
 
 }
+nav .columns .column a {
+  color: white;
+  font-size: 22px;
+}
 
 nav .columns .column .dropdown-menu {
   text-align: left;
@@ -37,17 +41,16 @@ nav .columns .profile img{
 nav .columns .profile {
   padding-right: 10px;
 }
-nav p{
-  color: white;
-  font-size: 22px;
+.container .text-search{
+  padding-left: 30px;
 }
-
 .container .search{
   width: 50%;
   margin: auto;
 }
 .container .search input{
   margin-bottom: 11px;
+  font-size: 18px;
 }
 
 .container .card{

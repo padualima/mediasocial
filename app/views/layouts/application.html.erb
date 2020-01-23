@@ -14,10 +14,12 @@
   <nav class="color-ground" role="navigation">
     <div class="columns">
       <div class="column logo">
+        <%= link_to root_path do %>
         <%= image_tag "govpredict-logo.png" %>
+        <% end %>
       </div>
       <div class="column has-text-centered">
-        <p>Publicações</p>
+        <%= link_to "Publicações", root_path %>
       </div>
       <div class="column profile">
         <div class="dropdown is-right is-hoverable">
@@ -45,26 +47,17 @@
   <br>
   <div class="container">
     <section>
+      <%= form_with url: home_search_path , method: :get, local: true, class: "" do |form| %>
       <div class="search ">
-        <input class="input is-rounded" type="text" placeholder="Rounded input">
-        <div class="select">
-          <select>
-            <option>Filtrar</option>
-            <option>With options</option>
-          </select>
-        </div>
+        <%= form.search_field :q, class: "input is-rounded", required: true, placeholder: 'search...', value: params[:q] %>
       </div>
+      <% end %>
     </section>
     <section>
       <%= yield %>
     </section>
-    <div class="columns is-8 is-responsive">
-      <div class="column">
-        <%= paginate @posts %>
-      </div>
-    </div>
     <footer>
-      
+
     </footer>
   </div>
 </body>

@@ -34,7 +34,7 @@ gem 'rails-i18n'
 gem 'jquery-rails'
 gem 'actionpack-action_caching'
 gem 'kaminari'
-gem 'image_processing'
+gem 'pg_search'
 # Use ActiveStorage variant
 gem 'mini_magick', '~> 4.8'
 
