@@ -1,12 +1,4 @@
-<p class="text-search">
-  <% if @posts_search.any? %>
-  <%= pluralize(@posts_search.count, 'resultado encontrado:', plural: 'resultados encontrados:') %>
-  <% else %>
-  Nenhum resultado encontrado.
-  <% end %>
-</p>
-
-<% @posts_search.each do |post| %>
+<% @posts.each do |post| %>
 <% cache post do  %>
 <%= link_to "#{post.link_social}" do %>
 <div class="card">
@@ -19,10 +11,10 @@
       </div>
       <div class="media-content">
         <p class="title is-4"><%= post.user.name %></p>
-        <p class="subtitle is-6">@<%= post.user.username %> • <i>By <%= post.account_user.account.description %></i></p>
+        <p class="subtitle is-6">@<%= post.user.username %> • <i>By <%= post.account.description %></i></p>
       </div>
       <div class="pull-right">
-        <p class="subtitle is-6">Lista de <%= post.list_user.list.description %> </p>
+        <p class="subtitle is-6">Lista de <%= post.list.description %> </p>
       </div>
     </div>
     <div class="content">
@@ -44,6 +36,6 @@
 <% end %>
 <div class="columns is-8 is-responsive ">
   <div class="column">
-    <%= paginate @posts_search %>
+    <%= paginate @posts %>
   </div>
 </div>

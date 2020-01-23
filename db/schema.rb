@@ -69,13 +69,13 @@ ActiveRecord::Schema.define(version: 2020_01_22_174741) do
   create_table "posts", force: :cascade do |t|
     t.string "body"
     t.bigint "user_id"
-    t.bigint "list_user_id"
-    t.bigint "account_user_id"
+    t.bigint "list_id"
+    t.bigint "account_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "link_social"
-    t.index ["account_user_id"], name: "index_posts_on_account_user_id"
-    t.index ["list_user_id"], name: "index_posts_on_list_user_id"
+    t.index ["account_id"], name: "index_posts_on_account_id"
+    t.index ["list_id"], name: "index_posts_on_list_id"
     t.index ["user_id"], name: "index_posts_on_user_id"
   end
 
@@ -91,7 +91,7 @@ ActiveRecord::Schema.define(version: 2020_01_22_174741) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "list_users", "lists"
   add_foreign_key "list_users", "users"
-  add_foreign_key "posts", "account_users"
-  add_foreign_key "posts", "list_users"
+  add_foreign_key "posts", "accounts"
+  add_foreign_key "posts", "lists"
   add_foreign_key "posts", "users"
 end

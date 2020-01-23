@@ -1,0 +1,9 @@
+<p class="text-search">
+  <% if @posts.any? %>
+  <%= pluralize(@posts.count, 'resultado encontrado:', plural: 'resultados encontrados:') %>
+  <% else %>
+  Nenhum resultado encontrado.
+  <% end %>
+</p>
+
+<%= render partial: "post" %>

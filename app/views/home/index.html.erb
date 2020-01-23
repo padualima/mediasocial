@@ -1,41 +1,5 @@
-<% @posts.each do |post| %>
-<% cache post do  %>
-<%= link_to "#{post.link_social}" do %>
-<div class="card">
-  <div class="card-content">
-    <div class="media">
-      <div class="media-left">
-        <figure class="image" >
-          <%= image_tag(post.small_photo, class: "is-rounded")%>
-        </figure>
-      </div>
-      <div class="media-content">
-        <p class="title is-4"><%= post.user.name %></p>
-        <p class="subtitle is-6">@<%= post.user.username %> • <i>By <%= post.account_user.account.description %></i></p>
-      </div>
-      <div class="pull-right">
-        <p class="subtitle is-6">Lista de <%= post.list_user.list.description %> </p>
-      </div>
-    </div>
-    <div class="content">
-      <%= post.body %>
-    </div>
-    <div class="card-image">
-      <figure class="image">
-        <%= image_tag(post.image) if post.image.attached? %>
-      </figure>
-    </div>
-    <br>
-    <div class="has-text-right">
-      <time datetime="2016-1-1"><%= l post.created_at, format: :short %></time>
-    </div>
+<section>
+  <div id="posts-show">
+    <%= render partial: "post" %>
   </div>
-</div>
-<% end %>
-<% end %>
-<% end %>
-<div class="columns is-8 is-responsive ">
-  <div class="column">
-    <%= paginate @posts %>
-  </div>
-</div>
+</section>

@@ -16,7 +16,6 @@
 //= require turbolinks
 //= require_tree .
 
-
 document.addEventListener('DOMContentLoaded', () => {
 
   // Get all "navbar-burger" elements

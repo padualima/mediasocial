@@ -48,15 +48,15 @@ puts "Creating the Post"
 
 50.times do |x|
   user = User.all.sample
-  list = ListUser.where(user_id: user).sample
-  account = AccountUser.where(user_id: user).sample
-  link = account.account.description.downcase
+  list = ListUser.where(user_id: user).sample.list_id
+  account = AccountUser.where(user_id: user).sample.account
+  link = account.description.downcase
 
   v = Post.create!(
     body: Faker::Lorem.paragraph(sentence_count: 2, supplemental: false, random_sentences_to_add: 4),
     user_id: user.id,
-    list_user_id: list.id,
-    account_user_id: account.id,
+    list_id: list,
+    account_id: account.id,
     link_social: "https://#{link}.com/#{user.username}"
   )
   if x % 2 == 0
