@@ -13,7 +13,7 @@ end
 puts "Created accounts"
 
 puts "Creating the Users"
-10.times do
+30.times do
   u = User.find_or_create_by!(name: Faker::Name.name, username: Faker::Internet.domain_word)
   num = [1,2,3,4,5,6].sample
   u.image_user.attach(io: File.open(Rails.root.join('app', 'assets', 'images', 'profile', "#{num}.jpeg")), filename: "#{num}.jpeg")
@@ -46,7 +46,7 @@ puts "Created lists of Users"
 
 puts "Creating the Post"
 
-50.times do |x|
+150.times do |x|
   user = User.all.sample
   list = ListUser.where(user_id: user).sample.list_id
   account = AccountUser.where(user_id: user).sample.account
