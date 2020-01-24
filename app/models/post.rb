@@ -3,6 +3,8 @@ class Post < ApplicationRecord
   belongs_to :user
   belongs_to :list
   belongs_to :account
+
+  validates :body, :link_social, presence: true
   has_one_attached :image
 
   def small_photo
