@@ -49,9 +49,34 @@
       <%= form_with url: home_search_path , method: :get, remote: true, id: "form" do |form| %>
       <div class="search">
         <%= form.search_field :q, class: "input is-rounded", placeholder: 'search...', value: params[:q] %>
-        <%= form.select :lists, @lists, {:prompt => 'Selecione o tipo'} %>
-        <%= form.select :accounts , @accounts, {:prompt => 'Selecione uma Rede Social'} %>
-        <%= form.submit %>
+      </div>
+      <div class="columns">
+        <div class="colum">
+          <div class="field">
+            <div class="select">
+              <%= form.select :lists, @lists, { prompt: 'Selecione um tipo'} %>
+            </div>
+          </div>
+          <div class="field">
+            <div class="select">
+              <%= form.select :accounts , @accounts, { prompt: 'Selecione uma rede social'} %>
+            </div>
+          </div>
+        </div>
+        <div class="column">
+          <div class="field">
+            Criado a partir da data: <%= form.date_select params[:date_first], prefix: :date_first, prompt: {day: "Dia", month: "Mes", year: "Ano"} %>
+          </div>
+        </div>
+        
+        <div class="column">
+          <div class="field">
+            Até: <%= form.date_select params[:date_end], prefix: :date_end, prompt: {day: "Dia", month: "Mes", year: "Ano"} %>
+          </div>
+        </div>
+      </div>
+      <div class="has-text-centered">
+        <%= form.submit "Pesquisar", class: "button" %>
       </div>
       <% end %>
     </section>

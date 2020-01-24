@@ -1,3 +1,6 @@
+<!-- this template was created, as it was the only solution I found so that when
+ the action search was returned, I would have no problem with the gem kaminari,
+summarizing I left the pagination only in the index -->
 <p class="text-search">
   <% if @posts.any? %>
   <%= pluralize(@posts.count, 'resultado encontrado:', plural: 'resultados encontrados:') %>
@@ -6,4 +9,39 @@
   <% end %>
 </p>
 
-<%= render partial: "post" %>
+<% @posts.each do |post| %>
+<% cache post do  %>
+<%= link_to "#{post.link_social}" do %>
+<div class="card">
+  <div class="card-content">
+    <div class="media">
+      <div class="media-left">
+        <figure class="image" >
+          <%= image_tag(post.small_photo, class: "is-rounded")%>
+        </figure>
+      </div>
+      <div class="media-content">
+        <p class="title is-4"><%= post.user.name %></p>
+        <p class="subtitle is-6">@<%= post.user.username %> • <i>By <%= post.account.description %></i></p>
+      </div>
+      <div class="pull-right">
+        <p class="subtitle is-6">Lista de <%= post.list.description %> </p>
+      </div>
+    </div>
+    <div class="content">
+      <%= post.body %>
+    </div>
+    <div class="card-image">
+      <figure class="image">
+        <%= image_tag(post.image) if post.image.attached? %>
+      </figure>
+    </div>
+    <br>
+    <div class="has-text-right">
+      <time datetime="2016-1-1"><%= l post.created_at, format: :short %></time>
+    </div>
+  </div>
+</div>
+<% end %>
+<% end %>
+<% end %>

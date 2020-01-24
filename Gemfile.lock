@@ -52,6 +52,8 @@ GEM
     bulma-rails (0.8.0)
       sassc (~> 2.0)
     byebug (11.1.0)
+    calendar_date_select (2.1.2)
+      rails (>= 3.1)
     cocoon (1.2.14)
     coderay (1.1.2)
     coffee-rails (4.2.2)
@@ -205,6 +207,7 @@ DEPENDENCIES
   bootsnap (>= 1.1.0)
   bulma-rails (~> 0.8.0)
   byebug
+  calendar_date_select
   cocoon
   coffee-rails (~> 4.2)
   faker
