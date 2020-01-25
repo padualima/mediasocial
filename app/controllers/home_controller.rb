@@ -5,6 +5,10 @@ class HomeController < ApplicationController
     @posts = Post.order('created_at desc').page(params[:page]).per(40)
   end
 
+  def show
+    render :index
+  end
+
   def search
     prepare_form
     respond_to do |format|
@@ -12,12 +16,34 @@ class HomeController < ApplicationController
         search_by_input
         search_by_list
         search_by_account_post
-        search_by_date
+
+        #find if there is any date blank
+        date_first = params[:date_first].values
+        date_end = params[:date_end].values
+        dates = date_first + date_end
+
+        dates.each do |d|
+          break unless d.blank? ? dates = false : dates = true
+        end
+        if dates
+          search_by_date(date_first, date_end)
+        else
+          redirect_to root_path
+        end
       }
     end
   end
 
   private
+
+  def search_params
+    params.permit(:q, :lists, :accounts)
+  end
+
+  def prepare_form
+    @lists = List.all.pluck(:description, :id)
+    @accounts = Account.all.pluck(:description, :id)
+  end
 
   def search_by_input
     if params[:q].present?
@@ -37,23 +63,10 @@ class HomeController < ApplicationController
     end
   end
 
-  def search_by_date
-    par_first = params[:date_first].values
-    par_end = params[:date_end].values
-    if (par_first[0].present? && par_first[1].present? && par_first[2].present?) &&
-      (par_end[0].present? && par_end[1].present? && par_end[2].present?)
-      date_first = par_first.reverse.join('-')
-      date_end = par_end.reverse.join('-')
-      @posts = Post.where("created_at between (?) and (?)", date_first, date_end).order('created_at desc')
-    end
+  def search_by_date(date_first, date_end)
+      date_first = date_first.reverse.join("-")
+      date_end = date_end.reverse.join("-")
+      @posts = Post.created_between(date_first, date_end)
   end
 
-  def prepare_form
-    @lists = List.all.map { |l| [l.description, l.id] }
-    @accounts = Account.all.map { |ac| [ac.description, ac.id] }
-  end
-
-  def search_params
-    params.permit(:q, :lists, :accounts, :date_first, :date_end)
-  end
 end

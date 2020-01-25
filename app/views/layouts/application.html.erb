@@ -50,6 +50,7 @@
       <div class="search">
         <%= form.search_field :q, class: "input is-rounded", placeholder: 'search...', value: params[:q] %>
       </div>
+      <br>
       <div class="columns">
         <div class="colum">
           <div class="field">
@@ -65,13 +66,16 @@
         </div>
         <div class="column">
           <div class="field">
-            Criado a partir da data: <%= form.date_select params[:date_first], prefix: :date_first, prompt: {day: "Dia", month: "Mes", year: "Ano"} %>
+            Criado a partir da data: <%= form.date_select :date_first,
+            prefix: :date_first,
+            prompt: {day: "Dia", month: "Mes", year: "Ano"} %>
           </div>
         </div>
-        
+
         <div class="column">
           <div class="field">
-            Até: <%= form.date_select params[:date_end], prefix: :date_end, prompt: {day: "Dia", month: "Mes", year: "Ano"} %>
+            Até: <%= form.date_select :date_end,
+             prefix: :date_end %>
           </div>
         </div>
       </div>

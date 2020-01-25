@@ -74,8 +74,15 @@ nav .columns .profile {
   nav .columns .logo {
     margin: 0;
   }
+  .container .columns{
+    padding: 25px;
+    margin: auto;
+  }
   .container .search{
     width: 80%;
     margin: auto;
+  }
+  .container .text-search{
+    margin: 20px;
   }
 }
